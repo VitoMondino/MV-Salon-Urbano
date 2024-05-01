@@ -1,0 +1,8 @@
+body {
+    font-family: 'Poppins', sans-serif;
+  }
+  .background {
+    background-image: url('https://source.unsplash.com/random/1920x1080');
+    background-size: cover;
+    background-position: center;
+  }

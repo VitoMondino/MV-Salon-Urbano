@@ -1,4 +1,16 @@
+document.getElementById('busqueda').addEventListener('keyup', function() {
+  var texto = this.value.toLowerCase();
+  var filas = document.querySelectorAll('#tabla-servicios tbody tr');
 
+  filas.forEach(function(fila) {
+    var textoFila = fila.textContent.toLowerCase();
+    if (textoFila.includes(texto)) {
+      fila.style.display = '';
+    } else {
+      fila.style.display = 'none';
+    }
+  });
+});
 // Función para enviar el mensaje por WhatsApp
 function enviarMensajeWhatsApp(nombre, mensaje) {
   // Formatear el mensaje para que sea compatible con la URL de WhatsApp

@@ -1,16 +1,20 @@
+// Agregar un event listener al input de búsqueda
 document.getElementById('busqueda').addEventListener('keyup', function() {
-  var texto = this.value.toLowerCase();
-  var filas = document.querySelectorAll('#tabla-servicios tbody tr');
+  var texto = this.value.toLowerCase(); // Obtener el valor del input de búsqueda y convertirlo a minúsculas
+  var filas = document.querySelectorAll('#tabla-servicios tbody tr'); // Seleccionar todas las filas de la tabla
 
+  // Iterar sobre cada fila de la tabla
   filas.forEach(function(fila) {
-    var textoFila = fila.textContent.toLowerCase();
+    var textoFila = fila.textContent.toLowerCase(); // Obtener el texto de la fila y convertirlo a minúsculas
+    // Verificar si el texto de la fila incluye el texto de búsqueda
     if (textoFila.includes(texto)) {
-      fila.style.display = '';
+      fila.style.display = ''; // Mostrar la fila si coincide con el texto de búsqueda
     } else {
-      fila.style.display = 'none';
+      fila.style.display = 'none'; // Ocultar la fila si no coincide con el texto de búsqueda
     }
   });
 });
+
 // Función para enviar el mensaje por WhatsApp
 function enviarMensajeWhatsApp(nombre, mensaje) {
   // Formatear el mensaje para que sea compatible con la URL de WhatsApp
@@ -61,53 +65,62 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-const carouselSlide = document.querySelector('.carousel-slide');
-const carouselImages = document.querySelectorAll('.carousel-slide img');
+// Seleccionar elementos del DOM
+const carouselSlide = document.querySelector('.carousel-slide'); // Contenedor del carrusel
+const carouselImages = document.querySelectorAll('.carousel-slide img'); // Imágenes del carrusel
 
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
+const prevBtn = document.getElementById('prevBtn'); // Botón de navegación anterior
+const nextBtn = document.getElementById('nextBtn'); // Botón de navegación siguiente
 
-const dotsContainer = document.querySelector('.dots-container');
+const dotsContainer = document.querySelector('.dots-container'); // Contenedor de los puntos indicadores
 
-let counter = 1;
-const size = carouselImages[0].clientWidth;
+let counter = 1; // Contador para rastrear la posición actual del carrusel
+const size = carouselImages[0].clientWidth; // Ancho de una imagen del carrusel
 
-carouselSlide.style.transform = `translateX(${-size * counter}px)`;
+// Posicionar el carrusel en la primera imagen
+carouselSlide.style.transform = `translateX(${-size * counter}px)`; 
 
+// Función para ir a un slide específico
 function goToSlide(index) {
-  carouselSlide.style.transition = 'transform 0.5s ease-in-out';
-  carouselSlide.style.transform = `translateX(${-size * index}px)`;
-  counter = index;
-  setActiveDot();
+  carouselSlide.style.transition = 'transform 0.5s ease-in-out'; // Agregar transición suave
+  carouselSlide.style.transform = `translateX(${-size * index}px)`; // Mover el carrusel a la posición del slide dado
+  counter = index; // Actualizar el contador de posición
+  setActiveDot(); // Activar el punto indicador correspondiente
 }
 
+// Función para activar el punto indicador correspondiente al slide actual
 function setActiveDot() {
+  // Remover la clase 'active' de todos los puntos indicadores
   document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
+  // Agregar la clase 'active' al punto indicador correspondiente al slide actual
   document.querySelector(`.dot[data-index="${counter}"]`).classList.add('active');
 }
 
+// Event Listener para el botón "Siguiente"
 nextBtn.addEventListener('click', () => {
-  if (counter >= carouselImages.length - 1) return;
-  carouselSlide.style.transition = 'transform 0.5s ease-in-out';
-  counter++;
-  carouselSlide.style.transform = `translateX(${-size * counter}px)`;
-  setActiveDot();
+  if (counter >= carouselImages.length - 1) return; // Evitar avanzar más allá del último slide
+  carouselSlide.style.transition = 'transform 0.5s ease-in-out'; // Agregar transición suave
+  counter++; // Incrementar el contador
+  carouselSlide.style.transform = `translateX(${-size * counter}px)`; // Mover el carrusel al siguiente slide
+  setActiveDot(); // Activar el punto indicador correspondiente al nuevo slide
 });
 
+// Event Listener para el botón "Anterior"
 prevBtn.addEventListener('click', () => {
-  if (counter <= 0) return;
-  carouselSlide.style.transition = 'transform 0.5s ease-in-out';
-  counter--;
-  carouselSlide.style.transform = `translateX(${-size * counter}px)`;
-  setActiveDot();
+  if (counter <= 0) return; // Evitar retroceder más allá del primer slide
+  carouselSlide.style.transition = 'transform 0.5s ease-in-out'; // Agregar transición suave
+  counter--; // Decrementar el contador
+  carouselSlide.style.transform = `translateX(${-size * counter}px)`; // Mover el carrusel al slide anterior
+  setActiveDot(); // Activar el punto indicador correspondiente al nuevo slide
 });
 
+// Crear puntos indicadores para cada slide
 carouselImages.forEach((image, index) => {
-  const dot = document.createElement('span');
-  dot.classList.add('dot');
-  dot.setAttribute('data-index', index);
-  dot.addEventListener('click', () => goToSlide(index));
-  dotsContainer.appendChild(dot);
+  const dot = document.createElement('span'); // Crear un elemento span para el punto indicador
+  dot.classList.add('dot'); // Agregar la clase 'dot' al punto indicador
+  dot.setAttribute('data-index', index); // Establecer el atributo data-index con el índice del slide
+  dot.addEventListener('click', () => goToSlide(index)); // Agregar evento click para ir al slide correspondiente
+  dotsContainer.appendChild(dot); // Agregar el punto indicador al contenedor de puntos
 });
 
-setActiveDot();
+setActiveDot(); // Activar el punto indicador correspondiente al slide actual

@@ -1,8 +1,11 @@
+/* Estilo para el cuerpo del documento */
 body {
-    font-family: 'Poppins', sans-serif;
-  }
-  .background {
-    background-image: url('https://source.unsplash.com/random/1920x1080');
-    background-size: cover;
-    background-position: center;
-  }
+  font-family: 'Poppins', sans-serif; /* Se establece la fuente 'Poppins' como la fuente principal */
+}
+
+/* Estilo para el elemento con clase 'background' */
+.background {
+  background-image: url('https://source.unsplash.com/random/1920x1080'); /* Se establece una imagen de fondo aleatoria obtenida de Unsplash */
+  background-size: cover; /* Se ajusta el tamaño de la imagen para cubrir completamente el contenedor */
+  background-position: center; /* Se centra la imagen de fondo */
+}

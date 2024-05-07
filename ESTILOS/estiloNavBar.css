@@ -65,65 +65,75 @@ h1 {
   }
 }
 
+/* Estilos para el contenedor del carrusel */
 .carousel-container {
-  position: relative;
-  width: 100%;
-  max-width: 450px; /* Ajusta este valor según tus necesidades */
-  margin: 0 auto;
-  overflow: hidden;
+  position: relative; /* Posición relativa para los elementos internos */
+  width: 100%; /* Ancho del 100% del contenedor padre */
+  max-width: 450px; /* Ancho máximo del contenedor del carrusel */
+  margin: 0 auto; /* Centrar horizontalmente */
+  overflow: hidden; /* Ocultar contenido que desborde del contenedor */
 }
 
+/* Estilos para los slides del carrusel */
 .carousel-slide {
-  display: flex;
-  width: 100%;
-  transition: transform 0.5s ease-in-out;
+  display: flex; /* Mostrar los slides como una fila */
+  width: 100%; /* Ancho del 100% */
+  transition: transform 0.5s ease-in-out; /* Agregar transición suave para el movimiento del carrusel */
 }
 
+/* Estilos para las imágenes dentro de los slides */
 .carousel-slide img {
-  flex: 0 0 100%;
-  max-width: 100%;
-  height: auto;
+  flex: 0 0 100%; /* Establecer el ancho de las imágenes al 100% del contenedor */
+  max-width: 100%; /* Ancho máximo del 100% */
+  height: auto; /* Altura automática */
 }
 
+/* Estilos para los botones de navegación */
 .nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 2rem;
-  font-weight: bold;
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.5);
-  border: none;
-  padding: 0.5rem;
-  cursor: pointer;
+  position: absolute; /* Posición absoluta para estar fuera del flujo normal */
+  top: 50%; /* Alinear en la mitad superior del contenedor */
+  transform: translateY(-50%); /* Centrar verticalmente */
+  font-size: 2rem; /* Tamaño de fuente */
+  font-weight: bold; /* Negrita */
+  color: #fff; /* Texto blanco */
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  border: none; /* Sin borde */
+  padding: 0.5rem; /* Relleno */
+  cursor: pointer; /* Cursor de puntero */
 }
 
+/* Estilos para el botón de navegación 'prev' */
 #prevBtn {
-  left: 1rem;
+  left: 1rem; /* Alinear a la izquierda con un espacio de 1rem */
 }
 
+/* Estilos para el botón de navegación 'next' */
 #nextBtn {
-  right: 1rem;
+  right: 1rem; /* Alinear a la derecha con un espacio de 1rem */
 }
 
+/* Estilos para el contenedor de los puntos indicadores */
 .dots-container {
-  text-align: center;
-  margin-top: 1rem;
+  text-align: center; /* Alinear al centro */
+  margin-top: 1rem; /* Margen superior de 1rem */
 }
 
+/* Estilos para los puntos indicadores */
 .dot {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #bbb;
-  margin: 0 0.25rem;
-  cursor: pointer;
+  display: inline-block; /* Mostrar como un bloque en línea */
+  width: 10px; /* Ancho de 10px */
+  height: 10px; /* Altura de 10px */
+  border-radius: 50%; /* Borde redondeado */
+  background-color: #bbb; /* Color de fondo */
+  margin: 0 0.25rem; /* Margen horizontal de 0.25rem */
+  cursor: pointer; /* Cursor de puntero */
 }
 
+/* Estilos para el punto indicador activo */
 .dot.active {
-  background-color: #717171;
+  background-color: #717171; /* Color de fondo para el punto activo */
 }
+
 
 h3{
   font-size: 32px; /* Tamaño de fuente */
@@ -153,110 +163,121 @@ h3{
   height: 100%;
 }
 
+/* Estilos para el elemento con id 'servicios' */
 #servicios {
-  margin-top: 20px;
+  margin-top: 20px; /* Margen superior de 20px */
 }
 
+/* Estilos para los títulos h3 dentro del elemento con id 'servicios' */
 #servicios h3 {
-  text-align: center;
+  text-align: center; /* Alineación centrada del texto */
 }
 
-
+/* Estilos para el contenedor general */
 .container {
-  margin: 0 auto;
-  width: 80%;
-  overflow-x: auto;
+  margin: 0 auto; /* Centrar horizontalmente */
+  width: 80%; /* Ancho del 80% del contenedor padre */
+  overflow-x: auto; /* Agregar barra de desplazamiento horizontal si es necesario */
 }
 
+/* Estilos para la tabla */
 .table {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
+  width: 100%; /* Ancho del 100% */
+  border-collapse: collapse; /* Colapsar los bordes de la tabla */
+  table-layout: fixed; /* Fijar el ancho de la tabla */
   background-color: white; /* Fondo blanco para la tabla */
 }
 
+/* Estilos para encabezados de tabla y celdas */
 .table th, .table td {
-  padding: 12px;
-  border: 1px solid #ccc;
-  text-align: left;
+  padding: 12px; /* Espaciado interno de 12px */
+  border: 1px solid #ccc; /* Borde de 1px sólido y color gris */
+  text-align: left; /* Alineación del texto a la izquierda */
 }
 
+/* Estilos para encabezados de tabla */
 .table th {
-  background-color: #343a40;
-  color: white;
-  font-weight: bold;
+  background-color: #343a40; /* Fondo gris oscuro */
+  color: white; /* Texto blanco */
+  font-weight: bold; /* Negrita */
 }
 
+/* Estilos para filas pares del cuerpo de la tabla */
 .table tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: #f2f2f2; /* Fondo gris claro */
 }
 
-/* Estilos para hacer la tabla responsive */
+/* Estilos para hacer la tabla responsive en dispositivos móviles */
 @media (max-width: 768px) {
   .table thead {
-    display: none;
+    display: none; /* Ocultar el encabezado de la tabla en dispositivos móviles */
   }
 
   .table, .table tbody, .table tr, .table td {
-    display: block;
-    width: 100%;
+    display: block; /* Mostrar elementos como bloques */
+    width: 100%; /* Ancho del 100% */
   }
 
   .table tr {
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
+    margin-bottom: 15px; /* Margen inferior de 15px */
+    border: 1px solid #ccc; /* Borde de 1px sólido y color gris */
   }
 
   .table td {
-    text-align: left;
-    padding-left: 50%;
-    position: relative;
+    text-align: left; /* Alineación del texto a la izquierda */
+    padding-left: 50%; /* Espaciado interno del 50% */
+    position: relative; /* Posición relativa */
   }
 
   .table td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 0;
-    width: 50%;
-    padding-left: 12px;
-    font-weight: bold;
+    content: attr(data-label); /* Mostrar el contenido del atributo 'data-label' */
+    position: absolute; /* Posición absoluta */
+    left: 0; /* Alineación a la izquierda */
+    width: 50%; /* Ancho del 50% */
+    padding-left: 12px; /* Espaciado interno izquierdo de 12px */
+    font-weight: bold; /* Negrita */
   }
 }
 
- /* Estilos generales */
+/* Estilos generales */
 .contacto {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
+  max-width: 600px; /* Ancho máximo de 600px */
+  margin: 0 auto; /* Centrar horizontalmente */
+  padding: 20px; /* Espaciado interno de 20px */
 }
 
+/* Estilos para formularios */
 form {
-  display: flex;
-  flex-direction: column;
+  display: flex; /* Mostrar como un flexbox */
+  flex-direction: column; /* Dirección de columna */
 }
 
+/* Estilos para etiquetas */
 label {
-  margin-bottom: 10px;
+  margin-bottom: 10px; /* Margen inferior de 10px */
 }
 
+/* Estilos para inputs y textarea */
 input, textarea {
-  margin-bottom: 20px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  width: 100%;
+  margin-bottom: 20px; /* Margen inferior de 20px */
+  padding: 10px; /* Espaciado interno de 10px */
+  border: 1px solid #ccc; /* Borde de 1px sólido y color gris */
+  border-radius: 5px; /* Borde redondeado */
+  font-size: 16px; /* Tamaño de fuente de 16px */
+  width: 100%; /* Ancho del 100% */
 }
 
+/* Estilos para botones */
 button {
-  padding: 10px 20px;
-  background-color: #168d12;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
+  padding: 10px 20px; /* Espaciado interno de 10px arriba y abajo, 20px izquierda y derecha */
+  background-color: #168d12; /* Color de fondo verde oscuro */
+  color: #fff; /* Texto blanco */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Borde redondeado */
+  cursor: pointer; /* Cursor de puntero */
+  font-size: 16px; /* Tamaño de fuente de 16px */
 }
+
 
 /* Media query para dispositivos móviles */
 @media screen and (max-width: 600px) {

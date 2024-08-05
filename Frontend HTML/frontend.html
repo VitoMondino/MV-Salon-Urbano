@@ -46,22 +46,6 @@
 <div id="inicio">
   <h1>Mathias Vedelago salon urbano Unisex</h1>
 </div>
-
-<section id="sobre-nosotros" class="about-us-section">
-  <div class="container">
-    <h2>Sobre Nosotros</h2>
-    <div class="about-us-content">
-      <div class="about-us-text">
-        <p>Bienvenidos a [Nombre de la Peluquería], donde la belleza y el cuidado personal son nuestra pasión. Desde [año de fundación], hemos estado comprometidos con proporcionar servicios de peluquería y estilismo de la más alta calidad en [nombre de la ciudad o área].</p>
-        <p>Nuestro equipo de estilistas profesionales está formado por expertos en las últimas tendencias y técnicas en cortes de cabello, coloración, peinados y tratamientos capilares. Nos enorgullece ofrecer un ambiente acogedor y relajante, donde cada cliente es tratado con atención personalizada y dedicación.</p>
-        <p>En [Nombre de la Peluquería], creemos que cada persona merece sentirse y lucir su mejor versión. Ya sea que busques un cambio de imagen completo, un retoque de color o un peinado especial para una ocasión, estamos aquí para ayudarte a alcanzar tu visión de belleza.</p>
-        <p>Visítanos en nuestra ubicación en [dirección de la peluquería] y descubre por qué somos la elección preferida de tantos clientes satisfechos. Tu satisfacción es nuestra mayor recompensa.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 <div class="carousel-container">
   <div class="carousel-slide">
       <img src="../IMAGENES/ImagenCarrusel1.png" alt="Imagen 1">
@@ -79,7 +63,20 @@
   <div class="dots-container"></div>
 </div>
 
-<br>
+<section id="sobre-nosotros" class="about-us-section">
+  <div class="hidden" class="container">
+    <h2>Sobre Nosotros</h2>
+    <div class="about-us-content">
+      <div class="about-us-text">
+        <p>Bienvenidos a [Nombre de la Peluquería], donde la belleza y el cuidado personal son nuestra pasión. Desde [año de fundación], hemos estado comprometidos con proporcionar servicios de peluquería y estilismo de la más alta calidad en [nombre de la ciudad o área].</p>
+        <p>Nuestro equipo de estilistas profesionales está formado por expertos en las últimas tendencias y técnicas en cortes de cabello, coloración, peinados y tratamientos capilares. Nos enorgullece ofrecer un ambiente acogedor y relajante, donde cada cliente es tratado con atención personalizada y dedicación.</p>
+        <p>En [Nombre de la Peluquería], creemos que cada persona merece sentirse y lucir su mejor versión. Ya sea que busques un cambio de imagen completo, un retoque de color o un peinado especial para una ocasión, estamos aquí para ayudarte a alcanzar tu visión de belleza.</p>
+        <p>Visítanos en nuestra ubicación en [dirección de la peluquería] y descubre por qué somos la elección preferida de tantos clientes satisfechos. Tu satisfacción es nuestra mayor recompensa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <div id="ubicacion">
   <h3>Ubicación de nuestro salón</h3>
   <div class="map-container">
@@ -87,7 +84,7 @@
   </div>
 </div>
 
-<div id="servicios">
+<div id="servicios"  class="hidden">
   <h3>Servicios</h3>
   <input type="text" id="busqueda" placeholder="Buscar servicio..."><br>
   <div class="container">
@@ -194,8 +191,8 @@
   </div>
 </div>
 
-<div id="Turnos" class="Turnos">
-  <div class="whatsapp-header">
+<div id="Turnos" class="hidden" class="Turnos">
+  <div class="whatsapp-header" >
     <h2>Contactanos por WhatsApp</h2>
     <img src="../IMAGENES/logo wpp.jpg" alt="WhatsApp" style="width: 50px; height: auto;">
   </div>
@@ -215,8 +212,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <footer>
-  <p>&copy; <span id="year"></span> Mathias Vedelago. Todos los derechos reservados.</p> 
   <div class="social-container">
+    <p>&copy; <span id="year"></span> Mathias Vedelago. Todos los derechos reservados.</p>
     <p>Instagram</p>
     <a href="https://www.instagram.com/vitomondino/" target="_blank" class="instagram-icon">
       <i class="fab fa-instagram"></i>
@@ -224,8 +221,11 @@
   </div>
   <div class="company-info">
     <img src="../IMAGENES/logoSoftKingCompany/logoSoftKing.PNG" alt="Logo SoftKing" class="company-logo">
-    <p>Created by SoftKing company</p>
+    <p>Created by SoftKingCompany</p>
     <p>+5493534282956</p>
+    <a href="https://www.instagram.com/vitomondino/" target="_blank" class="instagram-icon">
+      <i class="fab fa-instagram"></i>
+    </a>
   </div>
 </footer>
 

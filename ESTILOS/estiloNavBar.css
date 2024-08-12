@@ -530,81 +530,130 @@ form button:hover {
   }
 }
 
-/* Estilo para el footer */
 footer {
-  background-color: #1a1a1a; /* Color de fondo oscuro */
-  color: #fff; /* Color del texto blanco */
-  padding: 30px 0; /* Espacio interno, más espacio arriba y abajo */
-  text-align: center; /* Alineación del texto al centro */
-  font-family: 'Roboto', sans-serif; /* Fuente Roboto o una fuente genérica sans-serif */
-  border-top: 3px solid #fff; /* Borde superior blanco */
+  background-color: #2c3e50; /* Fondo elegante */
+  padding: 50px 20px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Sombra más profunda */
+  color: #ecf0f1;
+  font-family: 'Poppins', sans-serif; /* Fuente elegante */
+  background-image: linear-gradient(135deg, #1a252f 50%, #34495e 50%);
 }
 
-/* General Styles for Footer */
-footer .social-container {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Centra el contenido horizontalmente */
-  margin: 15px 0;
+.footer-section.links,
+.social-container,
+.company-info {
+  margin-bottom: 30px;
+  max-width: 300px;
+  flex: 1;
+  text-align: left;
 }
 
-footer .social-container p {
+.footer-section.links h3 {
+  color: #ffffff;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  border-bottom: 2px solid #e74c3c; /* Línea roja para un toque de estilo */
+  display: inline-block;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+.footer-section.links ul {
+  list-style: none;
+  padding: 0;
   margin: 0;
-  margin-right: 10px; /* Espacio entre el texto y el ícono */
 }
 
-footer .instagram-icon {
-  color: #E1306C; /* Color de Instagram */
-  font-size: 36px; /* Tamaño del ícono */
+.footer-section.links ul li {
+  margin-bottom: 15px;
+  position: relative;
+  font-size: 1.1em;
+}
+
+.footer-section.links ul li::before {
+  content: '✂'; /* Tijeras como icono decorativo */
+  color: #e74c3c;
+  font-size: 1.3em;
+  position: absolute;
+  left: -30px;
+  top: -2px;
+  transition: transform 0.3s ease;
+}
+
+.footer-section.links ul li a {
+  color: #bdc3c7;
   text-decoration: none;
-  transition: color 0.3s ease;
+  font-size: 1.2em;
+  transition: color 0.3s ease, padding-left 0.3s ease;
 }
 
-footer .instagram-icon:hover {
-  color: #C13584; /* Color de Instagram en hover */
+.footer-section.links ul li a:hover {
+  color: #2ecc71;
+  padding-left: 8px;
+  text-decoration: underline;
 }
 
-/* Estilo para el contenedor de la información de la empresa */
-footer .company-info {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 10px;
+.footer-section.links ul li:hover::before {
+  transform: rotate(20deg); /* Giro del icono al pasar el cursor */
 }
 
-footer .company-logo {
-  width: 40px; /* Ajusta el tamaño del logo según sea necesario */
-  height: auto;
+.social-container p,
+.company-info p {
+  margin-bottom: 15px;
+  font-size: 1.1em;
+  color: #ecf0f1;
+  font-weight: 500;
 }
 
-/* Responsive Design */
+.social-container a,
+.company-info a {
+  color: #ecf0f1;
+  font-size: 1.6em;
+  margin-right: 15px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-container a:hover,
+.company-info a:hover {
+  color: #e74c3c; /* Color rojo al pasar el cursor */
+  transform: scale(1.3); /* Agrandar ícono al pasar el cursor */
+}
+
+.company-info .company-logo {
+  max-width: 160px;
+  margin-bottom: 15px;
+  display: block;
+  border-radius: 8px;
+  border: 2px solid #ecf0f1; /* Bordes blancos para destacar el logo */
+  transition: transform 0.3s ease;
+}
+
+.company-info .company-logo:hover {
+  transform: rotate(-10deg); /* Pequeño giro al pasar el cursor */
+}
+
 @media (max-width: 768px) {
   footer {
-      padding: 15px;
-  }
-  
-  footer .social-container {
-      flex-direction: column; /* Coloca el texto y el ícono uno debajo del otro en pantallas pequeñas */
-  }
-  
-  footer .social-container p {
-      margin-bottom: 10px; /* Espacio debajo del texto en pantallas pequeñas */
-  }
-  
-  footer .instagram-icon {
-      font-size: 30px; /* Tamaño reducido del ícono en dispositivos móviles */
+      flex-direction: column;
+      align-items: center;
   }
 
-  footer .company-info {
-      flex-direction: column; /* Coloca el texto y el logo uno debajo del otro en pantallas pequeñas */
+  .footer-section.links,
+  .social-container,
+  .company-info {
+      max-width: 100%;
+      text-align: center;
   }
 
-  footer .company-logo {
-      width: 30px; /* Tamaño reducido del logo en dispositivos móviles */
+  .footer-section.links ul li::before {
+      left: -25px;
   }
 }
 
@@ -622,6 +671,7 @@ footer .company-logo {
 #Productos {
   margin-bottom: 20px; /* Espacio entre tarjetas */
 }
+
 h5{
   font-size: 18px; /* Tamaño de fuente */
   font-weight: bold; /* Peso de la fuente */
@@ -632,12 +682,6 @@ h5{
   letter-spacing: 2px; /* Espaciado entre letras */
   line-height: 1.5; /* Altura de línea */
   font-family: Georgia, 'Times New Roman', Times, serif;
-}
-/*Scrol animado*/
-.hidden {
-  opacity: 0;
-  transform: translateY(100px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .show {

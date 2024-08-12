@@ -22,7 +22,7 @@ function enviarMensajeWhatsApp(nombre, mensaje) {
   mensajeWhatsApp = mensajeWhatsApp.replace(/%20/g, '%20%20'); // Reemplazar espacios codificados por %20%20
 
   // Número de teléfono de destino para WhatsApp (reemplaza 'TUNUMERO' con el número real)
-  let numeroWhatsApp = '+54 9 3534 28-2956';
+  let numeroWhatsApp = '+54 9 353 569-6791';
 
   // Construir la URL de WhatsApp
   let urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${mensajeWhatsApp}`;

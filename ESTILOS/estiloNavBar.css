@@ -276,36 +276,42 @@ h3{
   max-width: 800px;
   margin: 40px auto;
   padding: 20px;
-  border-radius: 12px;
+  border-radius: 15px;
   background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   border: 1px solid #e0e0e0;
+  transition: transform 0.3s ease;
+}
+
+#servicios:hover {
+  transform: translateY(-5px);
 }
 
 /* Header Styles */
 #servicios h3 {
-  font-size: 1.75em;
+  font-size: 2em;
   color: #333;
   margin-bottom: 20px;
-  font-weight: 600;
+  font-weight: 700;
   text-align: center;
+  letter-spacing: 1px;
 }
 
 /* Search Box Styles */
 #busqueda {
   width: 100%;
-  padding: 12px;
+  padding: 15px;
   margin-bottom: 20px;
   border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 1em;
+  border-radius: 10px;
+  font-size: 1.1em;
   background-color: #f9f9f9;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 #busqueda:focus {
   border-color: #25D366;
-  box-shadow: 0 0 5px rgba(37, 211, 102, 0.3);
+  box-shadow: 0 0 10px rgba(37, 211, 102, 0.3);
   outline: none;
 }
 
@@ -317,20 +323,35 @@ h3{
 #tabla-servicios {
   width: 100%;
   border-collapse: collapse;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 #tabla-servicios th, 
 #tabla-servicios td {
-  padding: 12px;
+  padding: 15px;
   text-align: left;
+  font-size: 1em;
 }
 
 #tabla-servicios th {
-  background-color: #45b39d ; /* Color de WhatsApp */
+  background-color: #45b39d;
   color: #fff;
   font-weight: 600;
-  border-bottom: 2px solid #128C7E; /* Color de WhatsApp en hover */
+  border-bottom: 3px solid #128C7E;
 }
 
 #tabla-servicios tr:nth-child(even) {
@@ -338,7 +359,8 @@ h3{
 }
 
 #tabla-servicios tr:hover {
-  background-color: #f1f1f1;
+  background-color: #e0f7fa;
+  transition: background-color 0.3s ease;
 }
 
 #tabla-servicios td {
@@ -353,15 +375,16 @@ h3{
   }
   
   #busqueda {
-      font-size: 0.9em;
+      font-size: 1em;
   }
   
   #tabla-servicios th, 
   #tabla-servicios td {
-      padding: 10px;
-      font-size: 0.9em;
+      padding: 12px;
+      font-size: 0.95em;
   }
 }
+
 
 body {
   font-family: Arial, sans-serif;

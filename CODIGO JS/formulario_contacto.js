@@ -165,4 +165,21 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  let count = 0;
+  const target = 205; // Número final del contador
+  const speed = 25; // Velocidad de incremento
+  const counterElement = document.getElementById("contador");
+
+  const counter = setInterval(() => {
+    if (count < target) {
+      count++;
+      counterElement.innerText = "+" + count;
+    } else {
+      clearInterval(counter);
+    }
+  }, speed);
+});
+
+
 

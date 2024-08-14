@@ -422,14 +422,19 @@ h3{
   width: 100%;
   max-width: 800px;
   margin: 20px auto;
-  padding: 20px;
+  padding: 30px 20px; /* Añadido más padding para mayor espacio */
   text-align: center;
   background-color: #45b39d;
   border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Aumentada la sombra */
   color: #fff;
   position: relative;
   overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+#contador-clientes:hover {
+  transform: translateY(-5px);
 }
 
 #contador-clientes::before {
@@ -437,9 +442,9 @@ h3{
   position: absolute;
   top: -50px;
   left: -50px;
-  width: 150px;
-  height: 150px;
-  background-color: rgba(255, 255, 255, 0.2);
+  width: 200px; /* Aumentado el tamaño del círculo */
+  height: 200px;
+  background-color: rgba(255, 255, 255, 0.15);
   border-radius: 50%;
   transform: scale(0);
   animation: pulse 6s infinite ease-in-out;
@@ -461,48 +466,34 @@ h3{
 }
 
 #contador-clientes img {
-  width: 80px;  /* Aumentado el tamaño del icono */
+  width: 140px;  /* Aumentado el tamaño del icono */
   height: auto;
   margin-bottom: 20px;
 }
 
-#contador-clientes .numero-clientes {
-  font-size: 3.5em;  /* Aumentado el tamaño del número */
-  font-weight: 800;
-  margin-bottom: 15px;
+#contador-clientes h3 {
+  font-size: 4em;  /* Aumentado el tamaño del número */
+  font-weight: 700;
+  margin-bottom: 10px;
   letter-spacing: 2px;
+  transition: color 0.3s ease;
 }
 
-#contador-clientes .texto-clientes {
-  font-size: 1.6em;  /* Aumentado el tamaño del texto */
+#contador-clientes h3:hover {
+  color: #ffeaa7; /* Cambia el color del número al pasar el mouse */
+}
+
+#contador-clientes h4 {
+  font-size: 1.8em;  /* Tamaño del texto ajustado */
   font-weight: 600;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  #contador-clientes .numero-clientes {
-    font-size: 3em;
-  }
-
-  #contador-clientes .texto-clientes {
-    font-size: 1.4em;
-  }
-}
-h4 {
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: #ffffff;
-  text-align: center;
-  margin: 2rem 0;
-  padding: 0.5rem 1rem;
-  position: relative;
+  margin-top: 10px;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  background: rgba(0, 0, 0, 0.2); /* Añadido fondo semi-transparente */
+  padding: 10px;
+  border-radius: 10px;
   display: inline-block;
-  background: #45b39d;
-  transition: all 0.3s ease;
-  border-radius: 5px;
-  box-shadow: 0 2px 10px rgba(69, 179, 157, 0.3);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
 
 h4::before,
@@ -538,18 +529,63 @@ h4:hover::after {
 
 h4:hover {
   background: #3a9c8a;
+  color: #dfe6e9; /* Cambiado el color del texto al pasar el mouse */
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  h4 {
-    font-size: 2rem;
+  #contador-clientes {
+    padding: 20px 15px;
+  }
+
+  #contador-clientes h3 {
+    font-size: 3em;
+  }
+
+  #contador-clientes h4 {
+    font-size: 1.6em;
   }
 }
 
 @media (max-width: 480px) {
-  h4 {
-    font-size: 1.8rem;
+  #contador-clientes {
+    padding: 15px 10px;
+  }
+
+  #contador-clientes h3 {
+    font-size: 2.5em;
+  }
+
+  #contador-clientes h4 {
+    font-size: 1.4em;
+  }
+}
+
+/* Estilos para el código QR */
+#codigo-qr {
+  width: 150px; /* Ajusta el tamaño del QR */
+  height: auto; /* Mantiene la proporción original */
+  margin: 20px auto; /* Centra el QR horizontalmente */
+  display: block; /* Asegura que se trate como un bloque para centrarlo */
+  border-radius: 10px; /* Bordes redondeados para un estilo más suave */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade una sombra para resaltar el QR */
+  transition: transform 0.3s ease; /* Transición suave al hacer hover */
+}
+
+#codigo-qr:hover {
+  transform: scale(1.1); /* Aumenta ligeramente el tamaño al hacer hover */
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+  #codigo-qr {
+    width: 120px; /* Tamaño más pequeño en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  #codigo-qr {
+    width: 100px; /* Aún más pequeño en pantallas muy pequeñas */
   }
 }
 

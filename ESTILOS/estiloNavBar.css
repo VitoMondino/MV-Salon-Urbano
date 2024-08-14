@@ -304,10 +304,14 @@ h3{
 
 .map-container {
   position: relative;
-  max-width: 1200px; /* Limita el ancho máximo en pantallas grandes */
-  margin: 0 auto; /* Centra el contenedor horizontalmente */
-  padding-bottom: 56.25%; /* Relación de aspecto 16:9 (más común para mapas) */
-  height: 0;
+  max-width: 100%; /* Ancho máximo para pantallas pequeñas y medianas */
+  width: 100%;
+  margin: 20px auto;
+  padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: #f9f9f9;
 }
 
 .map-container iframe {
@@ -315,8 +319,19 @@ h3{
   top: 0;
   left: 0;
   width: 100%;
-  height: 90%; /* Ajusta la altura según tus necesidades */
+  height: 100%;
+  border: 0;
+  border-radius: 15px;
 }
+
+/* Media Query para pantallas grandes */
+@media (min-width: 1024px) {
+  .map-container {
+    max-width: 800px; /* Reduce el ancho máximo en pantallas grandes */
+    padding-bottom: 25%; /* Ajusta la altura para que el mapa sea un poco menos alto */
+  }
+}
+
 
 
 /* Container Styles */
@@ -424,7 +439,7 @@ h3{
   margin: 20px auto;
   padding: 30px 20px; /* Añadido más padding para mayor espacio */
   text-align: center;
-  background-color: #45b39d;
+  background-color: #8FBC8F;
   border-radius: 15px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Aumentada la sombra */
   color: #fff;

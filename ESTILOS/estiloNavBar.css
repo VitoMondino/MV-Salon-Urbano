@@ -1,14 +1,36 @@
 body {
-  background-image: url('../IMAGENES/fondoFrontend.jpg');
-  background-size: cover; /* Ajusta la imagen al tamaño del contenedor */
-  background-position: center; /* Posiciona la imagen en el centro */
-  background-repeat: no-repeat; /* Evita que la imagen se repita */
-  background-attachment: fixed; /* Fija la imagen de fondo para que no se desplace con el contenido */
+  background: linear-gradient(135deg, #000000, #1a1a1a, #333333, #4d4d4d, #666666, #808080);
+  background-size: 200% 200%;
+  animation: gradientAnimation 20s ease infinite;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
   margin: 0;
   padding: 0;
 }
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 50% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 50% 50%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+
+
+
 
 
 .navbar-custom {
@@ -97,7 +119,7 @@ body {
 h1 {
   font-size: 50px; /* Tamaño de fuente */
   font-weight: bold; /* Peso de la fuente */
-  color: #333; /* Color del texto */
+  color: #ada8a8; /* Color del texto */
   margin-bottom: 20px; /* Margen inferior */
   text-align: center; /* Alineación del texto */
   text-transform:none; /* Transformación del texto a mayúsculas */
@@ -128,7 +150,7 @@ h1 {
 h2 {
   font-family: 'Playfair Display', serif;
   font-size: 2.5rem;
-  color: #333;
+  color: #f9e39f;
   text-align: center;
   margin-bottom: 40px;
 }
@@ -293,7 +315,7 @@ h2 {
 h3{
   font-size: 32px; /* Tamaño de fuente */
   font-weight: bold; /* Peso de la fuente */
-  color: #333; /* Color del texto */
+  color: #ffffff; /* Color del texto */
   margin-bottom: 20px; /* Margen inferior */
   text-align: center; /* Alineación del texto */
   text-transform:none; /* Transformación del texto a mayúsculas */
@@ -331,6 +353,17 @@ h3{
     padding-bottom: 25%; /* Ajusta la altura para que el mapa sea un poco menos alto */
   }
 }
+
+.hidden {
+  opacity: 0;
+  transform: translateX(-30px); /* Efecto de deslizamiento horizontal desde la izquierda */transition: opacity 1s ease-out, transform 1s ease-out; /* Transición rápida y suave */
+}
+
+.show {
+  opacity: 1;
+  transform: translateX(0); /* Restaura la posición original */
+}
+
 
 
 
@@ -439,7 +472,7 @@ h3{
   margin: 20px auto;
   padding: 30px 20px; /* Añadido más padding para mayor espacio */
   text-align: center;
-  background-color: #8FBC8F;
+  background-color: #272927;
   border-radius: 15px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Aumentada la sombra */
   color: #fff;
@@ -459,7 +492,7 @@ h3{
   left: -50px;
   width: 200px; /* Aumentado el tamaño del círculo */
   height: 200px;
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(248, 244, 244, 0.15);
   border-radius: 50%;
   transform: scale(0);
   animation: pulse 6s infinite ease-in-out;
@@ -626,13 +659,26 @@ figure {
   border-radius: 8px;
   overflow: hidden;
   background-color: #fff;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 04px8pxrgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  position: relative;
+}
+
+figure:hover {
+  transform: translateY(-8px);
+  box-shadow: 012px20pxrgba(0, 0, 0, 0.15);
+  background-color: #f0f0f0;
 }
 
 img {
   width: 100%;
   height: auto;
   display: block;
+  transition: transform 0.3s ease;
+}
+
+figure:hoverimg {
+  transform: scale(1.05);
 }
 
 figcaption {
@@ -642,6 +688,42 @@ figcaption {
   font-size: 16px;
   background-color: #f9f9f9;
   border-top: 1px solid #ddd;
+  transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
+  position: relative;
+  z-index: 10;
+  opacity: 1;
+}
+
+figure:hoverfigcaption {
+  transform: translateY(-5px);
+  background-color: #ffffff;
+  opacity: 1;
+}
+
+/* Optional: Adding a subtle scaling effect to the grid items */.gridfigure {
+  transition: transform 0.3s ease;
+}
+
+.gridfigure:hover {
+  transform: scale(1.02);
+}
+
+
+.consultar-btn {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.consultar-btn:hover {
+  background-color: #45a049;
 }
 
 /* Container Styles for WhatsApp Form */

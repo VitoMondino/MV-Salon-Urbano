@@ -164,21 +164,83 @@ document.addEventListener("DOMContentLoaded", function () {
       observer.observe(element);
   });
 });
+//animacion para la seccion de sobre nosotros
+document.addEventListener("DOMContentLoaded", function() {
+  const observer = newIntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target); // Deja de observar una vez que el elemento está visible
+      }
+    });
+  }, { threshold: 0.13 }); // Un umbral ligeramente mayor para una transición más fluidaconst hiddenElements = document.querySelectorAll('.hidden');
+  hiddenElements.forEach((el) => observer.observe(el));
+});
+
+//productos
+// JavaScript
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Add a click event listener to each figure element
+  document.querySelectorAll('.grid figure').forEach((figure, index) => {
+      const whatsappText = `Hola, me gustaría consultar sobre Producto ${index + 1}`;
+      const link = `https://wa.me/+5493535696791?text=${encodeURIComponent(whatsappText)}`;
+
+      // Add a button inside the figure
+      const btn = document.createElement('a');
+      btn.classList.add('consultar-btn');
+      btn.innerText = 'Consultar';
+      btn.href = link;
+      btn.target = '_blank'; // Open in a new tab
+
+      figure.appendChild(btn);
+  });
+});
+
 
 document.addEventListener("DOMContentLoaded", function () {
-  let count = 0;
+  const contadorElement = document.getElementById("contador");
+  const contadorClientesElement = document.getElementById("contador-clientes");
+  const codigoQRElement = document.getElementById("codigo-qr");
   const target = 100; // Número final del contador
-  const speed = 25; // Velocidad de incremento
-  const counterElement = document.getElementById("contador");
+  const speed = 25; // Velocidad de incremento en milisegundos
+  const qrUrl = "https://www.google.com/search?sca_esv=ca10b7ff663b7daf&sxsrf=ADLYWILrEkJeOHG379jkYIHHRm9AIXKfDg:1723644541440&q=opiniones+de+math%C3%ADas+vedelago+villa+mar%C3%ADa&uds=ADvngMgnuliRvotS7ztzP57u3GhlqMtDdu-VEEfWKzl3jq8o98CpUuOt5Q7WaOBtjh42iYW69gFBAAv8Ari2igO9S_ZXjxZNcI-1BszDUFeDcs3bNNyBaTlFf1xFXmMHeSLaXGqrsRgB0UxrqND14OHiSBfqdlBKfFxmtMxjVIoHD_CKmCzmB66ZunWBvgUvYz--l2Kj6GrmsUbAT0XV4JwRZKWSnM7ogHxjkf4idLGeNxfESfuE4Czwo3VKZOWb-caORrGZYh5QtqK2JPR_bq42VhZ-ME3qo6h-y20u5cQMDNVmVQn8eJ2BYllKWMFT9KHqG-PZtpDvUf26hcaORXmpW4VGl34Ewg_mJGIJ5THTee_bcoqSIqmNRPCmtEezGxujzLwf9a6LuxiTQVGzlF6XkSelmWbVGbWD8sodJr2qWADU3w3ixAY&si=ACC90nwjPmqJHrCEt6ewASzksVFQDX8zco_7MgBaIawvaF4-7nwmaEueDVLSZuz1VJqFI2WebDJtt_WVyG82zw46V2fJZ2LeEKcngojtusEWTHfhjAlMpJdMu3e7Q5KWDz3x3WRGeTn4SsIOc_SnGsw1ZtJaHPqj5vlqOgURRgMZHY1wsbmVrKg%3D&sa=X&ictx=1&lei=fbq8ZunCGtLQ1sQP95_U-Q8"; // URL del código QR
+  let count = 0;
+  let counterStarted = false;
 
-  const counter = setInterval(() => {
-    if (count < target) {
-      count++;
-      counterElement.innerText = "+" + count;
-    } else {
-      clearInterval(counter);
-    }
-  }, speed);
+  const startCounter = () => {
+    if (counterStarted) return;
+    counterStarted = true;
+
+    const counter = setInterval(() => {
+      if (count < target) {
+        count++;
+        contadorElement.innerText = "+" + count;
+      } else {
+        clearInterval(counter);
+      }
+    }, speed);
+  };
+
+  // Añadir evento de clic solo al código QR
+  codigoQRElement.addEventListener("click", function(event) {
+    event.preventDefault(); // Prevenir cualquier comportamiento por defecto
+    window.open(qrUrl, "_blank");
+  });
+
+  // Cambiar el cursor a pointer solo para el código QR
+  codigoQRElement.style.cursor = "pointer";
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        startCounter();
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(contadorClientesElement);
 });
 
 

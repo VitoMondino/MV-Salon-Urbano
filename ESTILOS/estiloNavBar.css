@@ -30,6 +30,105 @@ body {
 
 
 
+#hero {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* La altura puede ser ajustada según tus necesidades */
+  background-image: url('../IMAGENES/fondoInicio.jpg'); /* Ejemplo de URL de Google Images */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  animation: backgroundAnimation 40s linear infinite; /* Animación de la imagen de fondo más lenta */
+}
+
+#hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Filtro oscuro sobre la imagen */
+  z-index: 0; /* Asegura que el filtro esté detrás del contenido */
+}
+
+#hero h1 {
+  position: relative;
+  color: white;
+  font-size: 4em; /* Aumentado para mayor impacto */
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 1; /* Asegura que el texto esté sobre la imagen */
+  margin-bottom: 20px; /* Espacio entre el título y el contenido inferior */
+  animation: textAnimation 2.5s ease-in-out; /* Animación del texto con duración ajustada */
+}
+
+/* Animación para la imagen de fondo */
+@keyframes backgroundAnimation {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+/* Animación para el texto */
+@keyframes textAnimation {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+    filter: blur(10px); /* Desenfoque inicial */
+  }
+  50% {
+    transform: translateY(10px);
+    opacity: 0.7;
+    filter: blur(5px); /* Desenfoque medio */
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+    filter: blur(0); /* Sin desenfoque */
+  }
+}
+
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  overflow: hidden;
+  z-index: 1; /* Asegura que el carrusel esté sobre la imagen */
+}
+
+.carousel-slide img {
+  width: 100%;
+  display: block;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  #hero {
+    height: auto; /* Ajusta la altura automáticamente en pantallas pequeñas */
+  }
+
+  #inicio h1 {
+    font-size: 1.8em;
+    padding: 15px;
+  }
+}
+
+
+
 
 
 
@@ -324,16 +423,25 @@ h3{
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+#ubicacion {
+  text-align: center; /* Centra el título */
+  padding: 40px 0; /* Espaciado vertical alrededor de la sección */
+}
+
+.map-section {
+  background-color: #fff; /* Fondo blanco para toda la sección */
+  padding: 20px; /* Espaciado dentro del contenedor de la sección */
+}
+
 .map-container {
   position: relative;
-  max-width: 100%; /* Ancho máximo para pantallas pequeñas y medianas */
+  max-width: 600px; /* Ajusta el tamaño del contenedor para que coincida con el tamaño original del iframe */
   width: 100%;
-  margin: 20px auto;
-  padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+  height: 450px; /* Mantiene la altura original del iframe */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
   border-radius: 15px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  background-color: #f9f9f9;
+  background-color: #fff; /* Fondo blanco para el contenedor del mapa */
 }
 
 .map-container iframe {
@@ -349,10 +457,11 @@ h3{
 /* Media Query para pantallas grandes */
 @media (min-width: 1024px) {
   .map-container {
-    max-width: 800px; /* Reduce el ancho máximo en pantallas grandes */
-    padding-bottom: 25%; /* Ajusta la altura para que el mapa sea un poco menos alto */
+    max-width: 800px; /* Ajusta el tamaño del contenedor en pantallas grandes para que coincida con el tamaño original del iframe */
+    height: 450px; /* Mantiene la altura original del iframe */
   }
 }
+
 
 .hidden {
   opacity: 0;
@@ -465,16 +574,21 @@ h3{
   color: #555;
 }
 
-/* Contador de Clientes Styles */
+#contador-seccion {
+  background-color: #fff; /* Fondo blanco para la sección */
+  padding: 20px; /* Espaciado dentro de la sección */
+  display: flex;
+  justify-content: center; /* Centra el contenedor horizontalmente */
+}
+
 #contador-clientes {
   width: 100%;
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 30px 20px; /* Añadido más padding para mayor espacio */
+  max-width: 800px; /* Mantiene el tamaño máximo del bloque */
+  padding: 30px 20px; /* Espaciado interno del bloque */
   text-align: center;
-  background-color: #272927;
+  background-color: #272927; /* Fondo original del bloque */
   border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Aumentada la sombra */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Sombra del bloque */
   color: #fff;
   position: relative;
   overflow: hidden;
@@ -482,7 +596,7 @@ h3{
 }
 
 #contador-clientes:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px); /* Efecto hover */
 }
 
 #contador-clientes::before {
@@ -490,7 +604,7 @@ h3{
   position: absolute;
   top: -50px;
   left: -50px;
-  width: 200px; /* Aumentado el tamaño del círculo */
+  width: 200px; /* Tamaño del círculo */
   height: 200px;
   background-color: rgba(248, 244, 244, 0.15);
   border-radius: 50%;
@@ -514,13 +628,13 @@ h3{
 }
 
 #contador-clientes img {
-  width: 140px;  /* Aumentado el tamaño del icono */
+  width: 140px; /* Tamaño del icono */
   height: auto;
   margin-bottom: 20px;
 }
 
 #contador-clientes h3 {
-  font-size: 4em;  /* Aumentado el tamaño del número */
+  font-size: 4em; /* Tamaño del número */
   font-weight: 700;
   margin-bottom: 10px;
   letter-spacing: 2px;
@@ -528,16 +642,16 @@ h3{
 }
 
 #contador-clientes h3:hover {
-  color: #ffeaa7; /* Cambia el color del número al pasar el mouse */
+  color: #ffeaa7; /* Color del número al pasar el mouse */
 }
 
 #contador-clientes h4 {
-  font-size: 1.8em;  /* Tamaño del texto ajustado */
+  font-size: 1.8em; /* Tamaño del texto ajustado */
   font-weight: 600;
   margin-top: 10px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  background: rgba(0, 0, 0, 0.2); /* Añadido fondo semi-transparente */
+  background: rgba(255, 253, 253, 0.2); /* Fondo semi-transparente */
   padding: 10px;
   border-radius: 10px;
   display: inline-block;
@@ -577,7 +691,7 @@ h4:hover::after {
 
 h4:hover {
   background: #3a9c8a;
-  color: #dfe6e9; /* Cambiado el color del texto al pasar el mouse */
+  color: #dfe6e9; /* Color del texto al pasar el mouse */
 }
 
 /* Responsive Design */
@@ -611,7 +725,7 @@ h4:hover {
 
 /* Estilos para el código QR */
 #codigo-qr {
-  width: 150px; /* Ajusta el tamaño del QR */
+  width: 150px; /* Tamaño del QR */
   height: auto; /* Mantiene la proporción original */
   margin: 20px auto; /* Centra el QR horizontalmente */
   display: block; /* Asegura que se trate como un bloque para centrarlo */
@@ -636,6 +750,7 @@ h4:hover {
     width: 100px; /* Aún más pequeño en pantallas muy pequeñas */
   }
 }
+
 
 
 
@@ -724,6 +839,84 @@ figure:hoverfigcaption {
 
 .consultar-btn:hover {
   background-color: #45a049;
+}
+
+/*SECCION DE HORARIOS*/
+/* Estilos para la sección de horarios */
+#horarios {
+  background-color: #f5f5f5;
+  padding: 40px 0;
+  text-align: center;
+}
+
+#horarios .container {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#horarios h2 {
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Animación para los bloques de horario */
+.horario {
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0; /* Inicialmente oculto para la animación */
+  transform: translateY(20px); /* Inicialmente desplazado hacia abajo */
+  animation: fadeInUp 1s forwards; /* Animación aplicada */
+}
+
+.horario:nth-child(1) {
+  animation-delay: 0.3s; /* Retardo para cada bloque */
+}
+
+.horario:nth-child(2) {
+  animation-delay: 0.6s;
+}
+
+.horario:nth-child(3) {
+  animation-delay: 0.9s;
+}
+
+.horario h3 {
+  font-size: 1.8em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.horario p {
+  font-size: 1.2em;
+  color: #555;
+}
+
+/* Animación de desvanecimiento y movimiento hacia arriba */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Diseño responsive */
+@media (max-width: 768px) {
+  #horarios h2 {
+    font-size: 2em;
+  }
+
+  .horario h3 {
+    font-size: 1.5em;
+  }
+
+  .horario p {
+    font-size: 1em;
+  }
 }
 
 /* Container Styles for WhatsApp Form */
@@ -985,6 +1178,9 @@ h5{
   opacity: 1;
   transform: translateY(0);
 }
+
+
+
 
 
 

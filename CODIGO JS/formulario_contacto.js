@@ -1,19 +1,3 @@
-// Agregar un event listener al input de búsqueda
-document.getElementById('busqueda').addEventListener('keyup', function() {
-  var texto = this.value.toLowerCase(); // Obtener el valor del input de búsqueda y convertirlo a minúsculas
-  var filas = document.querySelectorAll('#tabla-servicios tbody tr'); // Seleccionar todas las filas de la tabla
-
-  // Iterar sobre cada fila de la tabla
-  filas.forEach(function(fila) {
-    var textoFila = fila.textContent.toLowerCase(); // Obtener el texto de la fila y convertirlo a minúsculas
-    // Verificar si el texto de la fila incluye el texto de búsqueda
-    if (textoFila.includes(texto)) {
-      fila.style.display = ''; // Mostrar la fila si coincide con el texto de búsqueda
-    } else {
-      fila.style.display = 'none'; // Ocultar la fila si no coincide con el texto de búsqueda
-    }
-  });
-});
 
 // Función para enviar el mensaje por WhatsApp
 function enviarMensajeWhatsApp(nombre, mensaje) {
@@ -195,6 +179,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
       figure.appendChild(btn);
   });
+});
+
+//seccion de horarios
+document.addEventListener('DOMContentLoaded', function() {
+  var horariosSection = document.getElementById('horarios');
+  var horarios = horariosSection.querySelectorAll('.horario');
+  
+  // Función para verificar si un elemento está en el viewport
+  function isElementInViewport(el) {
+      var rect = el.getBoundingClientRect();
+      return (
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+  }
+
+  // Función para iniciar la animación
+  function startAnimation() {
+      if (isElementInViewport(horariosSection)) {
+          horarios.forEach(function(horario, index) {
+              horario.style.animationDelay = (index * 0.3) + 's';
+              horario.style.animationName = 'fadeInUp';
+          });
+          // Remover el evento de scroll una vez que la animación ha comenzado
+          window.removeEventListener('scroll', startAnimation);
+      }
+  }
+
+  // Inicialmente, quitamos la animación de los elementos
+  horarios.forEach(function(horario) {
+      horario.style.opacity = '0';
+      horario.style.transform = 'translateY(20px)';
+      horario.style.animationName = 'none';
+  });
+
+  // Agregamos el evento de scroll
+  window.addEventListener('scroll', startAnimation);
+  
+  // Verificamos la posición inicial por si la sección ya está visible
+  startAnimation();
 });
 
 

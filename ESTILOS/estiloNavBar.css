@@ -204,6 +204,52 @@ body {
   transform: scaleX(1);
 }
 
+/* Instagram Icon Styles */
+.instagram-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 15px;
+  color: #ffffff; /* Color inicial del icono */
+  font-size: 1.5em; /* Tamaño del icono */
+  transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 50%;
+  padding: 8px;
+}
+
+.instagram-icon:hover {
+  color: #e1306c; /* Color del icono al pasar el cursor */
+  transform: scale(1.2); /* Efecto de agrandado */
+  box-shadow: 0 4px 8px rgba(225, 48, 108, 0.3); /* Sombra rosada suave */
+  background-color: #ffffff; /* Fondo blanco en hover */
+}
+
+.instagram-icon i {
+  transition: transform 0.3s ease;
+}
+
+.instagram-icon:hover i {
+  transform: rotate(15deg); /* Rotación ligera del icono en hover */
+}
+
+/* Responsive Design for Mobile Devices */
+@media (max-width: 768px) {
+  .instagram-icon {
+    margin-left: 10px; /* Reduce el margen en pantallas pequeñas */
+    font-size: 1.2em; /* Disminuye el tamaño del icono en dispositivos móviles */
+    padding: 6px; /* Reduce el padding para adaptarse a la pantalla */
+  }
+
+  .instagram-icon:hover {
+    transform: scale(1.1); /* Disminuye el efecto de escala en dispositivos móviles */
+  }
+
+  .navbar-nav {
+    margin-top: 10px; /* Añade espacio entre los enlaces de navegación y el icono */
+  }
+}
+
+
 @media (max-width: 768px) {
   .navbar-custom {
     padding: 10px 15px;
@@ -554,10 +600,10 @@ h3{
 }
 
 #tabla-servicios th {
-  background-color: #45b39d;
+  background-color: #34495e;
   color: #fff;
   font-weight: 600;
-  border-bottom: 3px solid #128C7E;
+  border-bottom: 3px solid #2c3e50;
 }
 
 #tabla-servicios tr:nth-child(even) {

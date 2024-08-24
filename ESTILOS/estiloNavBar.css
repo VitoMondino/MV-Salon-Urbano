@@ -28,8 +28,6 @@ body {
   }
 }
 
-
-
 #hero {
   position: relative;
   width: 100%;
@@ -101,22 +99,30 @@ body {
   }
 }
 
-
 .carousel-container {
   position: relative;
-  width: 100%;
+  width: 80%; /* Disminuye el tamaño del carrusel al 80% del ancho del contenedor padre */
   max-width: 1200px;
   overflow: hidden;
   z-index: 1; /* Asegura que el carrusel esté sobre la imagen */
+  transform: scale(0.8); /* Escala el contenedor del carrusel para hacerlo más pequeño */
+  transform-origin: center; /* Asegura que la escala ocurra desde el centro */
+  margin: 0 auto; /* Centra el carrusel en su contenedor */
 }
 
 .carousel-slide img {
   width: 100%;
   display: block;
+  /* Las imágenes mantienen su tamaño relativo al contenedor del carrusel */
 }
 
 /* Ajustes responsivos */
 @media (max-width: 768px) {
+  .carousel-container {
+    width: 100%; /* Ajusta el ancho del carrusel al 100% en pantallas pequeñas */
+    transform: scale(0.9); /* Escala el carrusel ligeramente en pantallas pequeñas */
+  }
+
   #hero {
     height: auto; /* Ajusta la altura automáticamente en pantallas pequeñas */
   }
@@ -125,12 +131,7 @@ body {
     font-size: 1.8em;
     padding: 15px;
   }
-}
-
-
-
-
-
+} 
 
 .navbar-custom {
   background-color: #2c3e50;
@@ -519,72 +520,82 @@ h3{
   transform: translateX(0); /* Restaura la posición original */
 }
 
-
-
-
-/* Container Styles */
-#servicios {
-  width: 90%;
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
-  border-radius: 15px;
-  background-color: #fff;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e0e0e0;
-  transition: transform 0.3s ease;
-}
-
-#servicios:hover {
-  transform: translateY(-5px);
-}
-
-/* Header Styles */
-#servicios h3 {
-  font-size: 2em;
-  color: #333;
-  margin-bottom: 20px;
-  font-weight: 700;
+#reviews {
+  background-image: url('../IMAGENES/fondoReseñas.jpg'); /* Ajusta la ruta de la imagen de fondo */
+  background-size: cover;
+  background-position: center;
+  padding: 80px 20px;
   text-align: center;
-  letter-spacing: 1px;
-}
-
-/* Search Box Styles */
-#busqueda {
-  width: 100%;
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  font-size: 1.1em;
-  background-color: #f9f9f9;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-#busqueda:focus {
-  border-color: #25D366;
-  box-shadow: 0 0 10px rgba(37, 211, 102, 0.3);
-  outline: none;
-}
-
-/* Table Styles */
-.container {
-  overflow-x: auto;
-}
-
-#tabla-servicios {
-  width: 100%;
-  border-collapse: collapse;
-  border-radius: 10px;
+  color: #fff;
+  position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 1s ease-in-out;
+}
+
+#reviews::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+#reviews .content {
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.7); /* Fondo oscuro semi-transparente */
+  padding: 40px;
+  border-radius: 10px;
+  position: relative;
+  z-index: 2;
+  transform: scale(0.9);
+  opacity: 0;
+  animation: scaleIn 1s ease-out forwards;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+#reviews h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: #ffba08; 
+  font-weight: bold;
+  animation: fadeInText 1s ease-in-out forwards;
+}
+
+#reviews h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  font-weight: 700;
+  animation: fadeInText 1s ease-in-out 0.2s forwards;
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -592,215 +603,42 @@ h3{
   }
 }
 
-#tabla-servicios th, 
-#tabla-servicios td {
-  padding: 15px;
-  text-align: left;
-  font-size: 1em;
-}
-
-#tabla-servicios th {
-  background-color: #34495e;
-  color: #fff;
-  font-weight: 600;
-  border-bottom: 3px solid #2c3e50;
-}
-
-#tabla-servicios tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-#tabla-servicios tr:hover {
-  background-color: #e0f7fa;
-  transition: background-color 0.3s ease;
-}
-
-#tabla-servicios td {
-  border-bottom: 1px solid #ddd;
-  color: #555;
-}
-
-#contador-seccion {
-  background-color: #fff; /* Fondo blanco para la sección */
-  padding: 20px; /* Espaciado dentro de la sección */
+#reviews .qr-code {
   display: flex;
-  justify-content: center; /* Centra el contenedor horizontalmente */
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  animation: fadeIn 1s ease-in-out 0.4s forwards;
 }
 
-#contador-clientes {
-  width: 100%;
-  max-width: 800px; /* Mantiene el tamaño máximo del bloque */
-  padding: 30px 20px; /* Espaciado interno del bloque */
-  text-align: center;
-  background-color: #272927; /* Fondo original del bloque */
-  border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Sombra del bloque */
-  color: #fff;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease;
+#reviews .qr-code img {
+  width: 150px;
+  height: 150px;
 }
 
-#contador-clientes:hover {
-  transform: translateY(-5px); /* Efecto hover */
+#reviews .description {
+  font-size: 1em;
+  line-height: 1.6em;
+  margin-bottom: 40px;
+  animation: fadeInText 1s ease-in-out 0.6s forwards;
 }
 
-#contador-clientes::before {
-  content: '';
-  position: absolute;
-  top: -50px;
-  left: -50px;
-  width: 200px; /* Tamaño del círculo */
-  height: 200px;
-  background-color: rgba(248, 244, 244, 0.15);
-  border-radius: 50%;
-  transform: scale(0);
-  animation: pulse 6s infinite ease-in-out;
+#reviews .client-satisfaction p:first-child {
+  font-size: 1.5em;
+  margin: 10px 0;
+  color: #ffba08; 
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(0);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1);
-    opacity: 0.7;
-  }
-  100% {
-    transform: scale(0);
-    opacity: 1;
-  }
-}
-
-#contador-clientes img {
-  width: 140px; /* Tamaño del icono */
-  height: auto;
-  margin-bottom: 20px;
-}
-
-#contador-clientes h3 {
-  font-size: 4em; /* Tamaño del número */
+#reviews .client-satisfaction h3 {
+  font-size: 1.5em;
+  margin: 10px 0;
   font-weight: 700;
-  margin-bottom: 10px;
-  letter-spacing: 2px;
-  transition: color 0.3s ease;
 }
 
-#contador-clientes h3:hover {
-  color: #ffeaa7; /* Color del número al pasar el mouse */
+#reviews .client-satisfaction p:last-child {
+  font-size: 1.2em;
+  margin-top: 5px;
 }
-
-#contador-clientes h4 {
-  font-size: 1.8em; /* Tamaño del texto ajustado */
-  font-weight: 600;
-  margin-top: 10px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  background: rgba(255, 253, 253, 0.2); /* Fondo semi-transparente */
-  padding: 10px;
-  border-radius: 10px;
-  display: inline-block;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-}
-
-h4::before,
-h4::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  transition: all 0.3s ease;
-}
-
-h4::before {
-  border-top: 2px solid #ffffff;
-  border-bottom: 2px solid #ffffff;
-  transform: scale(0, 1);
-}
-
-h4::after {
-  border-left: 2px solid #ffffff;
-  border-right: 2px solid #ffffff;
-  transform: scale(1, 0);
-}
-
-h4:hover::before {
-  transform: scale(1, 1);
-}
-
-h4:hover::after {
-  transform: scale(1, 1);
-}
-
-h4:hover {
-  background: #3a9c8a;
-  color: #dfe6e9; /* Color del texto al pasar el mouse */
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  #contador-clientes {
-    padding: 20px 15px;
-  }
-
-  #contador-clientes h3 {
-    font-size: 3em;
-  }
-
-  #contador-clientes h4 {
-    font-size: 1.6em;
-  }
-}
-
-@media (max-width: 480px) {
-  #contador-clientes {
-    padding: 15px 10px;
-  }
-
-  #contador-clientes h3 {
-    font-size: 2.5em;
-  }
-
-  #contador-clientes h4 {
-    font-size: 1.4em;
-  }
-}
-
-/* Estilos para el código QR */
-#codigo-qr {
-  width: 150px; /* Tamaño del QR */
-  height: auto; /* Mantiene la proporción original */
-  margin: 20px auto; /* Centra el QR horizontalmente */
-  display: block; /* Asegura que se trate como un bloque para centrarlo */
-  border-radius: 10px; /* Bordes redondeados para un estilo más suave */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade una sombra para resaltar el QR */
-  transition: transform 0.3s ease; /* Transición suave al hacer hover */
-}
-
-#codigo-qr:hover {
-  transform: scale(1.1); /* Aumenta ligeramente el tamaño al hacer hover */
-}
-
-/* Diseño responsivo */
-@media (max-width: 768px) {
-  #codigo-qr {
-    width: 120px; /* Tamaño más pequeño en pantallas pequeñas */
-  }
-}
-
-@media (max-width: 480px) {
-  #codigo-qr {
-    width: 100px; /* Aún más pequeño en pantallas muy pequeñas */
-  }
-}
-
-
-
-
-
 
 .productos {
   max-width: 1200px;
@@ -871,98 +709,27 @@ figure:hoverfigcaption {
 
 
 .consultar-btn {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
+  background-color: #28a745; /* Color de fondo más brillante */
+  border: 2px solid #28a745; /* Borde del mismo color que el fondo */
+  color: white; /* Color del texto */
+  padding: 12px 24px; /* Espaciado interior ajustado */
+  text-align: center; /* Centra el texto */
+  text-decoration: none; /* Elimina el subrayado de texto */
+  display: inline-block; /* Alineación en línea */
+  font-size: 16px; /* Tamaño de fuente */
+  font-weight: 500; /* Peso de fuente moderado */
+  border-radius: 25px; /* Bordes más redondeados */
+  margin: 8px 4px; /* Espaciado exterior ajustado */
+  cursor: pointer; /* Muestra el cursor de puntero */
+  transition: all 0.3s ease; /* Transición suave para todos los cambios */
 }
 
 .consultar-btn:hover {
-  background-color: #45a049;
-}
-
-/*SECCION DE HORARIOS*/
-/* Estilos para la sección de horarios */
-#horarios {
-  background-color: #f5f5f5;
-  padding: 40px 0;
-  text-align: center;
-}
-
-#horarios .container {
-  width: 90%;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-#horarios h2 {
-  font-size: 2.5em;
-  color: #333;
-  margin-bottom: 30px;
-}
-
-/* Animación para los bloques de horario */
-.horario {
-  background-color: #ffffff;
-  padding: 20px;
-  margin: 10px 0;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  opacity: 0; /* Inicialmente oculto para la animación */
-  transform: translateY(20px); /* Inicialmente desplazado hacia abajo */
-  animation: fadeInUp 1s forwards; /* Animación aplicada */
-}
-
-.horario:nth-child(1) {
-  animation-delay: 0.3s; /* Retardo para cada bloque */
-}
-
-.horario:nth-child(2) {
-  animation-delay: 0.6s;
-}
-
-.horario:nth-child(3) {
-  animation-delay: 0.9s;
-}
-
-.horario h3 {
-  font-size: 1.8em;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.horario p {
-  font-size: 1.2em;
-  color: #555;
-}
-
-/* Animación de desvanecimiento y movimiento hacia arriba */
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Diseño responsive */
-@media (max-width: 768px) {
-  #horarios h2 {
-    font-size: 2em;
-  }
-
-  .horario h3 {
-    font-size: 1.5em;
-  }
-
-  .horario p {
-    font-size: 1em;
-  }
+  background-color: white; /* Color de fondo en hover */
+  color: #28a745; /* Color del texto en hover */
+  border-color: #28a745; /* Color del borde en hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  transform: scale(1.05); /* Efecto de aumento en hover */
 }
 
 /* Container Styles for WhatsApp Form */
@@ -1177,20 +944,73 @@ footer {
 
 @media (max-width: 768px) {
   footer {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 15px;
   }
 
   .footer-section.links,
   .social-container,
   .company-info {
-      max-width: 100%;
-      text-align: center;
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
   }
 
   .footer-section.links ul li::before {
-      left: -25px;
+    left: -20px;
   }
+
+  .footer-section.links ul li {
+    margin-bottom: 10px;
+    font-size: 1em;
+  }
+
+  .social-container a,
+  .company-info a {
+    font-size: 1.4em;
+  }
+  
+  .company-info .company-logo {
+    max-width: 120px;
+  }
+}
+
+.footer-content h3 {
+  font-size: 1.2em;
+  color: #fff;
+  margin-bottom: 10px;
+  border: 1px solid #fff;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.availability-table {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  font-size: 1em;
+  color: #fff;
+}
+
+.availability-table tr {
+  border-bottom: 1px solid #555;
+}
+
+.availability-table td {
+  padding: 10px 20px;
+  text-align: left;
+}
+
+.availability-table td:nth-child(2) {
+  text-align: right;
+}
+
+.availability-table tr.closed td {
+  color: #b30000; /* Color para los días cerrados */
+  border-bottom: 2px solid #b30000; /* Línea roja para el día cerrado */
 }
 
 

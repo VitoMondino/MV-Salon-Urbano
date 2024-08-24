@@ -128,6 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
 //scrol animado
 document.addEventListener("DOMContentLoaded", function () {
   const elements = document.querySelectorAll('.hidden');
@@ -148,6 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
       observer.observe(element);
   });
 });
+
 //animacion para la seccion de sobre nosotros
 document.addEventListener("DOMContentLoaded", function() {
   const observer = newIntersectionObserver((entries, observer) => {
@@ -181,92 +183,51 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-//seccion de horarios
+//funcion para la parte de resenias y opiniones
 document.addEventListener('DOMContentLoaded', function() {
-  var horariosSection = document.getElementById('horarios');
-  var horarios = horariosSection.querySelectorAll('.horario');
+  const reviewsSection = document.getElementById('reviews');
+  const content = reviewsSection.querySelector('.content');
   
-  // Función para verificar si un elemento está en el viewport
-  function isElementInViewport(el) {
-      var rect = el.getBoundingClientRect();
-      return (
-          rect.top >= 0 &&
-          rect.left >= 0 &&
-          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-          rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-      );
+  // Función para activar las animaciones
+  function activateAnimations(entries, observer) {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              reviewsSection.style.animation = 'fadeIn 1s ease-in-out forwards';
+              content.style.animation = 'scaleIn 1s ease-out forwards';
+              
+              // Activar animaciones para elementos internos
+              const h2 = content.querySelector('h2');
+              const h1 = content.querySelector('h1');
+              const qrCode = content.querySelector('.qr-code');
+              const description = content.querySelector('.description');
+              
+              h2.style.animation = 'fadeInText 1s ease-in-out forwards';
+              h1.style.animation = 'fadeInText 1s ease-in-out 0.2s forwards';
+              qrCode.style.animation = 'fadeIn 1s ease-in-out 0.4s forwards';
+              description.style.animation = 'fadeInText 1s ease-in-out 0.6s forwards';
+              
+              // Desconectar el observer una vez que las animaciones se han activado
+              observer.disconnect();
+          }
+      });
   }
-
-  // Función para iniciar la animación
-  function startAnimation() {
-      if (isElementInViewport(horariosSection)) {
-          horarios.forEach(function(horario, index) {
-              horario.style.animationDelay = (index * 0.3) + 's';
-              horario.style.animationName = 'fadeInUp';
-          });
-          // Remover el evento de scroll una vez que la animación ha comenzado
-          window.removeEventListener('scroll', startAnimation);
-      }
-  }
-
-  // Inicialmente, quitamos la animación de los elementos
-  horarios.forEach(function(horario) {
-      horario.style.opacity = '0';
-      horario.style.transform = 'translateY(20px)';
-      horario.style.animationName = 'none';
-  });
-
-  // Agregamos el evento de scroll
-  window.addEventListener('scroll', startAnimation);
   
-  // Verificamos la posición inicial por si la sección ya está visible
-  startAnimation();
-});
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  const contadorElement = document.getElementById("contador");
-  const contadorClientesElement = document.getElementById("contador-clientes");
-  const codigoQRElement = document.getElementById("codigo-qr");
-  const target = 100; // Número final del contador
-  const speed = 25; // Velocidad de incremento en milisegundos
-  const qrUrl = "https://www.google.com/search?sca_esv=ca10b7ff663b7daf&sxsrf=ADLYWILrEkJeOHG379jkYIHHRm9AIXKfDg:1723644541440&q=opiniones+de+math%C3%ADas+vedelago+villa+mar%C3%ADa&uds=ADvngMgnuliRvotS7ztzP57u3GhlqMtDdu-VEEfWKzl3jq8o98CpUuOt5Q7WaOBtjh42iYW69gFBAAv8Ari2igO9S_ZXjxZNcI-1BszDUFeDcs3bNNyBaTlFf1xFXmMHeSLaXGqrsRgB0UxrqND14OHiSBfqdlBKfFxmtMxjVIoHD_CKmCzmB66ZunWBvgUvYz--l2Kj6GrmsUbAT0XV4JwRZKWSnM7ogHxjkf4idLGeNxfESfuE4Czwo3VKZOWb-caORrGZYh5QtqK2JPR_bq42VhZ-ME3qo6h-y20u5cQMDNVmVQn8eJ2BYllKWMFT9KHqG-PZtpDvUf26hcaORXmpW4VGl34Ewg_mJGIJ5THTee_bcoqSIqmNRPCmtEezGxujzLwf9a6LuxiTQVGzlF6XkSelmWbVGbWD8sodJr2qWADU3w3ixAY&si=ACC90nwjPmqJHrCEt6ewASzksVFQDX8zco_7MgBaIawvaF4-7nwmaEueDVLSZuz1VJqFI2WebDJtt_WVyG82zw46V2fJZ2LeEKcngojtusEWTHfhjAlMpJdMu3e7Q5KWDz3x3WRGeTn4SsIOc_SnGsw1ZtJaHPqj5vlqOgURRgMZHY1wsbmVrKg%3D&sa=X&ictx=1&lei=fbq8ZunCGtLQ1sQP95_U-Q8"; // URL del código QR
-  let count = 0;
-  let counterStarted = false;
-
-  const startCounter = () => {
-    if (counterStarted) return;
-    counterStarted = true;
-
-    const counter = setInterval(() => {
-      if (count < target) {
-        count++;
-        contadorElement.innerText = "+" + count;
-      } else {
-        clearInterval(counter);
-      }
-    }, speed);
-  };
-
-  // Añadir evento de clic solo al código QR
-  codigoQRElement.addEventListener("click", function(event) {
-    event.preventDefault(); // Prevenir cualquier comportamiento por defecto
-    window.open(qrUrl, "_blank");
+  // Inicialmente, desactivar todas las animaciones
+  reviewsSection.style.animation = 'none';
+  content.style.animation = 'none';
+  content.querySelector('h2').style.animation = 'none';
+  content.querySelector('h1').style.animation = 'none';
+  content.querySelector('.qr-code').style.animation = 'none';
+  content.querySelector('.description').style.animation = 'none';
+  
+  // Crear y configurar el IntersectionObserver
+  const observer = new IntersectionObserver(activateAnimations, {
+      root: null,
+      threshold: 0.1 // Activa cuando al menos el 10% de la sección es visible
   });
-
-  // Cambiar el cursor a pointer solo para el código QR
-  codigoQRElement.style.cursor = "pointer";
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        startCounter();
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  observer.observe(contadorClientesElement);
+  
+  // Comenzar a observar la sección de reseñas
+  observer.observe(reviewsSection);
 });
 
 

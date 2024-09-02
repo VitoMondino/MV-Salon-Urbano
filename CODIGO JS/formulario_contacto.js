@@ -168,8 +168,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 document.addEventListener('DOMContentLoaded', () => {
   // Add a click event listener to each figure element
-  document.querySelectorAll('.grid figure').forEach((figure, index) => {
-      const whatsappText = `Hola, me gustaría consultar sobre Producto ${index + 1}`;
+  document.querySelectorAll('.grid figure').forEach((figure) => {
+      const productName = figure.querySelector('figcaption').innerText;
+      const whatsappText = `Hola, me gustaría consultar sobre ${productName}`;
       const link = `https://wa.me/+5493535696791?text=${encodeURIComponent(whatsappText)}`;
 
       // Add a button inside the figure
@@ -182,6 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
       figure.appendChild(btn);
   });
 });
+
 
 //funcion para la parte de resenias y opiniones
 document.addEventListener('DOMContentLoaded', function() {

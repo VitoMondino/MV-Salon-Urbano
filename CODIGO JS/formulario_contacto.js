@@ -58,6 +58,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   let counter = 0;
   let size;
+  let startX;
+  let currentX;
+  let isDragging = false;
 
   // Función para actualizar el tamaño de las imágenes
   function updateSize() {
@@ -127,7 +130,38 @@ document.addEventListener('DOMContentLoaded', function () {
       carouselSlide.style.transform = `translateX(${-size * counter}px)`;
     }
   });
+
+  // Funciones para el desplazamiento táctil
+  carouselSlide.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+  });
+
+  carouselSlide.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    currentX = e.touches[0].clientX;
+    const diffX = startX - currentX;
+    carouselSlide.style.transition = 'none';
+    carouselSlide.style.transform = `translateX(${(-size * counter - diffX)}px)`;
+  });
+
+  carouselSlide.addEventListener('touchend', () => {
+    if (!isDragging) return;
+    isDragging = false;
+    const diffX = startX - currentX;
+    if (Math.abs(diffX) > size / 4) {
+      if (diffX > 0) {
+        // Swipe left
+        if (counter < carouselImages.length - 1) counter++;
+      } else {
+        // Swipe right
+        if (counter > 0) counter--;
+      }
+    }
+    updateCarousel();
+  });
 });
+
 
 //scrol animado
 document.addEventListener("DOMContentLoaded", function () {

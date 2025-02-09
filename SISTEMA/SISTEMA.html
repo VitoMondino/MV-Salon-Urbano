@@ -83,7 +83,7 @@
 
     <script>
         function countdown() {
-            const launchDate = new Date("March 1, 2025 00:00:00").getTime();
+            const launchDate = new Date("August 20, 2025 00:00:00").getTime();
             const interval = setInterval(() => {
                 const now = new Date().getTime();
                 const timeLeft = launchDate - now;
@@ -94,7 +94,7 @@
                     return;
                 }
                 
-                const days = Math.floor(timeLeft / (1000 * 20 * 20 * 24));
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);

@@ -1,52 +1,73 @@
-
 // Función para enviar el mensaje por WhatsApp
 function enviarMensajeWhatsApp(nombre, mensaje) {
+  // Formatear el número de teléfono correctamente - eliminando espacios y caracteres especiales
+  let numeroWhatsApp = '5493535696791'; // Número sin el signo + al principio
+  
+  // Crear el mensaje completo
+  let mensajeCompleto = `Hola, soy ${nombre}, ${mensaje}`;
+  
   // Formatear el mensaje para que sea compatible con la URL de WhatsApp
-  let mensajeWhatsApp = encodeURIComponent(`Hola, soy ${nombre}, ${mensaje}`);
-  mensajeWhatsApp = mensajeWhatsApp.replace(/%20/g, '%20%20'); // Reemplazar espacios codificados por %20%20
-
-  // Número de teléfono de destino para WhatsApp (reemplaza 'TUNUMERO' con el número real)
-  let numeroWhatsApp = '+54 9 353 569-6791';
-
-  // Construir la URL de WhatsApp
-  let urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${mensajeWhatsApp}`;
-
+  // Usar encodeURIComponent para manejar correctamente espacios y caracteres especiales
+  let mensajeWhatsApp = encodeURIComponent(mensajeCompleto);
+  
+  // Construir la URL de WhatsApp (usando la versión web para mayor compatibilidad)
+  let urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeWhatsApp}`;
+  
+  // Registrar la URL para depuración
+  console.log("URL de WhatsApp:", urlWhatsApp);
+  
   // Abrir la URL de WhatsApp en una nueva ventana o pestaña
   window.open(urlWhatsApp, '_blank');
-}
-
-// Event listener para el envío del formulario
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-  // Evitar que el formulario se envíe
-  event.preventDefault();
-
-  // Obtener los valores de los campos de entrada y limpiarlos
-  let nombre = document.getElementById('nombre').value.trim();
-  let mensaje = document.getElementById('mensaje').value.trim();
-
-  // Verificar si los campos no están vacíos
-  if (nombre === '' || mensaje === '') {
-      alert('Por favor, completa todos los campos.');
-      return;
-  }
-
-  // Llamar a la función para enviar el mensaje por WhatsApp
-  enviarMensajeWhatsApp(nombre, mensaje);
-
+  
   // Limpiar los campos del formulario después de enviar el mensaje
   document.getElementById('nombre').value = '';
   document.getElementById('mensaje').value = '';
-});
+}
 
-// Agregar un evento de clic a todos los enlaces de la barra de navegación para hacer el desplazamiento suave
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-      e.preventDefault();
+// Función para manejar el envío del formulario
+function handleFormSubmit(event) {
+  // Evitar que el formulario se envíe de forma predeterminada
+  event.preventDefault();
+  
+  // Obtener los valores de los campos de entrada y limpiarlos
+  let nombre = document.getElementById('nombre').value.trim();
+  let mensaje = document.getElementById('mensaje').value.trim();
+  
+  // Verificar si los campos no están vacíos
+  if (nombre === '' || mensaje === '') {
+    alert('Por favor, completa todos los campos.');
+    return;
+  }
+  
+  // Llamar a la función para enviar el mensaje por WhatsApp
+  enviarMensajeWhatsApp(nombre, mensaje);
+}
 
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-      });
-  });
+// Esperar a que el DOM esté completamente cargado
+document.addEventListener('DOMContentLoaded', function() {
+  // Obtener referencia al formulario
+  const formulario = document.getElementById('contactForm');
+  const mensajeTextarea = document.getElementById('mensaje');
+  
+  // Verificar que los elementos existen
+  if (formulario && mensajeTextarea) {
+    // Event listener para el envío del formulario (botón o Enter en cualquier campo)
+    formulario.addEventListener('submit', handleFormSubmit);
+    
+    // Event listener para la tecla Enter en el textarea de mensaje
+    mensajeTextarea.addEventListener('keydown', function(event) {
+      // Verificar si se presionó Enter sin la tecla Shift
+      if (event.key === 'Enter' && !event.shiftKey) {
+        event.preventDefault(); // Evitar el salto de línea predeterminado
+        
+        // Simular el envío del formulario
+        handleFormSubmit(new Event('submit'));
+      }
+      // Si se presiona Shift+Enter, permitir el comportamiento predeterminado (nueva línea)
+    });
+  } else {
+    console.error('No se encontraron elementos del formulario');
+  }
 });
 
 document.addEventListener('DOMContentLoaded', function () {
